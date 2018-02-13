@@ -25,7 +25,7 @@ public class A1Q2 {
          City ovo = new City(); //create a city for the robot
         //put a robot in my city
         RobotSE drake = new RobotSE(ovo, 1, 2, Direction.SOUTH);
-        drake.setColor(Color.black); //make drake red 
+        
         new Wall(ovo, 1, 1, Direction.NORTH); //insert a wall
         new Wall(ovo, 1, 2, Direction.NORTH); //insert a wall
         new Wall(ovo, 1, 1, Direction.WEST); //insert a wall

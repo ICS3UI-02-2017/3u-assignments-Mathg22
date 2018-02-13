@@ -34,7 +34,7 @@ public class A1Q1 {
         new Wall(ovo, 2, 2, Direction.EAST); //insert a wall
         new Wall(ovo, 1, 2, Direction.EAST); //insert a wall
         //drake.setLabel("OVO"); //label drake OVO
-        drake.setColor(Color.black); //make drake red
+        drake.setColor(Color.red); //make drake red
   //move the bot counterclockwise around the box and return to starting position.
   drake.move(2);
   drake.turnLeft();
