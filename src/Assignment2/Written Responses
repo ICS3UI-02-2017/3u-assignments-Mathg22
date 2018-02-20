@@ -1,0 +1,13 @@
+1.
+a) this.getAvenue()>0    This is true.
+b) this.getAvenue()<=5   This is true.
+c) this.getStreet()!=1   This is false.
+d) !(this.getStreet()==1)  This is false.
+e) this.frontIsClear()   This is false.
+f) !this.frontIsClear()  This is true.
+g) this.frontIsClear()== false  This is true.
+
+
+2.
+These if statements behave the same way because in both statements if there is something there to pick up then
+the bot will turn right and if there is nothing there to pick up then the bot will turn left.
