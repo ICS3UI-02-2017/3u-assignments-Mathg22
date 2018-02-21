@@ -23,7 +23,7 @@ public class A1Q5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-          City ovo = new City(); //create a city for the robot
+        City ovo = new City(); //create a city for the robot
         //put a robot in my city
         RobotSE drake = new RobotSE(ovo, 0, 1, Direction.WEST);
         drake.setColor(Color.red); //make drake red
@@ -31,9 +31,9 @@ public class A1Q5 {
         RobotSE bruce = new RobotSE(ovo, 3, 3, Direction.EAST);
         bruce.setColor(Color.blue);//make bruce blue
         new Wall(ovo, 3, 3, Direction.SOUTH); //Inserting walls
-        new Wall(ovo, 3,3,Direction.EAST);
-        new Wall(ovo, 2,3, Direction.NORTH);
-        new Wall(ovo, 2,3, Direction.EAST);
+        new Wall(ovo, 3, 3, Direction.EAST);
+        new Wall(ovo, 2, 3, Direction.NORTH);
+        new Wall(ovo, 2, 3, Direction.EAST);
         new Wall(ovo, 2, 3, Direction.WEST);
         drake.setLabel("O"); //set label O to drake
         bruce.setLabel("B"); //set label B to bruce
@@ -42,7 +42,7 @@ public class A1Q5 {
         new Thing(ovo, 1, 1);
         new Thing(ovo, 1, 2);
         new Thing(ovo, 2, 2);
-        
+
         drake.move();
         bruce.turnAround();
         drake.turnLeft();
@@ -59,7 +59,7 @@ public class A1Q5 {
         drake.pickThing();
         bruce.pickThing();
         bruce.turnLeft();
-        
-        
+
+
     }
 }

@@ -11,7 +11,9 @@ import becker.robots.Wall;
 import java.awt.Color;
 
 /**
- *move drake and bruce to exchange locations while avoiding obstacles and arriving at almost the same time
+ * move drake and bruce to exchange locations while avoiding obstacles and
+ * arriving at almost the same time
+ *
  * @author mathg8825
  */
 public class A1Q4 {
@@ -21,8 +23,8 @@ public class A1Q4 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-             City ovo = new City(); //create a city for the robot
+
+        City ovo = new City(); //create a city for the robot
         //put a robot in my city
         RobotSE drake = new RobotSE(ovo, 0, 0, Direction.SOUTH);
         drake.setColor(Color.red); //make drake red
@@ -53,7 +55,7 @@ public class A1Q4 {
         drake.turnRight();
         bruce.move();
         drake.move();
-        
-        
+
+
     }
 }

@@ -12,7 +12,9 @@ import becker.robots.Wall;
 import java.awt.Color;
 
 /**
- *Move the bot counter clockwise around a box until it reaches it's starting position.
+ * Move the bot counter clockwise around a box until it reaches it's starting
+ * position.
+ *
  * @author mathg8825
  */
 public class A1Q1 {
@@ -35,15 +37,15 @@ public class A1Q1 {
         new Wall(ovo, 1, 2, Direction.EAST); //insert a wall
         //drake.setLabel("OVO"); //label drake OVO
         drake.setColor(Color.red); //make drake red
-  //move the bot counterclockwise around the box and return to starting position.
-  drake.move(2);
-  drake.turnLeft();
-  drake.move(3);
-  drake.turnLeft();
-  drake.move(3);
-  drake.turnLeft(); 
-  drake.move(3);
-  drake.turnLeft();
-  drake.move(1);
+        //move the bot counterclockwise around the box and return to starting position.
+        drake.move(2);
+        drake.turnLeft();
+        drake.move(3);
+        drake.turnLeft();
+        drake.move(3);
+        drake.turnLeft();
+        drake.move(3);
+        drake.turnLeft();
+        drake.move(1);
     }
 }
