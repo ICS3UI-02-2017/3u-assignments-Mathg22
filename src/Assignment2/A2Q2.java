@@ -50,8 +50,8 @@ public class A2Q2 {
             if (drake.frontIsClear()) {
                 // move
                 drake.move();
-            // if there is a hurdle
-            }else{
+                // if there is a hurdle
+            } else {
                 // jump over it
                 drake.turnLeft();
                 drake.move();
@@ -62,8 +62,8 @@ public class A2Q2 {
                 drake.turnLeft();
             }
         }
-       
-    
-        
+
+
+
     }
 }
