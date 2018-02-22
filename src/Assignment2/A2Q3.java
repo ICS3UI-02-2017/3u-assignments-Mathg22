@@ -20,31 +20,31 @@ public class A2Q3 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-          //create a city for the robot
+        //create a city for the robot
         City ovo = new City();
         //put a robot in my city
         RobotSE drake = new RobotSE(ovo, 9, 6, Direction.SOUTH);
         drake.setColor(Color.red); //make drake red
         //figure out where you are
         //turn around to face west 
-     while(drake.getDirection()!=Direction.WEST){
-        drake.turnLeft();
-     }
-     //keep moving until reaching Avenue 0
-        while(drake.getAvenue()!=0){
-            
+        while (drake.getDirection() != Direction.WEST) {
+            drake.turnLeft();
+        }
+        //keep moving until reaching Avenue 0
+        while (drake.getAvenue() != 0) {
+
             drake.move();
-        
-    }
+
+        }
         //turn to face north
-        while(drake.getDirection()!=Direction.NORTH){
+        while (drake.getDirection() != Direction.NORTH) {
             drake.turnRight();
-            
+
         }
         //keep moving until reaching street 0
-        while(drake.getStreet()!=0){
-        
-        drake.move();
+        while (drake.getStreet() != 0) {
+
+            drake.move();
         }
-        }
+    }
 }
