@@ -24,7 +24,7 @@ public class A2Q4 {
         //create a city for the robot
         City ovo = new City();
         //put a robot in my city
-        RobotSE drake = new RobotSE(ovo, 9, 6, Direction.SOUTH);
+        RobotSE drake = new RobotSE(ovo, 0, 0, Direction.EAST);
         drake.setColor(Color.red); //make drake red
         //top left pillar
         new Wall(ovo, 1, 1, Direction.NORTH);
@@ -55,8 +55,23 @@ public class A2Q4 {
         new Wall(ovo, 4, 4, Direction.EAST);
         new Wall(ovo, 4, 4, Direction.SOUTH);
         new Wall(ovo, 4, 4, Direction.WEST);
-        
-        //castle must remain on the right side
-        
+
+        //castle must remain on the right side of th bot
+
+        while (drake.countThingsInBackpack() == 0) {
+
+            drake.move();
+            drake.move();
+            drake.turnRight();
+            drake.move();
+            drake.turnLeft();
+            drake.move();
+            drake.turnLeft();
+            drake.move();
+            drake.turnRight();
+            drake.move(2);
+            drake.turnRight();
+        }
+
     }
 }
