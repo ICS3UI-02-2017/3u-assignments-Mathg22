@@ -26,8 +26,8 @@ public class Quiz1 {
         City ovo = new City();
         //put a robot in my city
         RobotSE drake = new RobotSE(ovo, 4, 0, Direction.EAST);
-      //make drake red
-        drake.setColor(Color.red); 
+        //make drake red
+        drake.setColor(Color.red);
 
         //inserting walls
         new Wall(ovo, 4, 2, Direction.WEST);
@@ -49,7 +49,7 @@ public class Quiz1 {
         new Thing(ovo, 3, 2);
         new Thing(ovo, 2, 3);
         new Thing(ovo, 1, 4);
-        
+
 //move up the left side of the staircase while picking up every thing
         drake.move();
         drake.pickThing();
@@ -68,7 +68,7 @@ public class Quiz1 {
         drake.turnRight();
         drake.move();
         drake.pickThing();
-        
+
         //move down the right side of the staircase while placing all of the things at the steps
         drake.move();
         drake.putThing();
@@ -87,8 +87,8 @@ public class Quiz1 {
         drake.move();
         drake.putThing();
         drake.turnLeft();
-        
+
         drake.move();
-        
+
     }
 }
