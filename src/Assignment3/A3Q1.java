@@ -36,6 +36,6 @@ public class A3Q1 {
         new Wall(ovo, 2, 1, Direction.SOUTH);
         new Wall(ovo, 2, 2, Direction.SOUTH);
         
-        
+        int x = 2;
     }
 }
