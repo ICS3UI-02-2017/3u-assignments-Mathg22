@@ -56,11 +56,11 @@ public class A2Q4 {
         new Wall(ovo, 4, 4, Direction.SOUTH);
         new Wall(ovo, 4, 4, Direction.WEST);
 
-        
-/*I created a loop of the same command because every side of the castle is the
- same shape requiring the same command. I created a loop by using 
- * a statement that in this case will always be true
-        */
+
+        /*I created a loop of the same command because every side of the castle is the
+         same shape requiring the same command. I created a loop by using 
+         * a statement that in this case will always be true
+         */
         while (drake.countThingsInBackpack() == 0) {
 
             drake.move();
