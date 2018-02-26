@@ -1,0 +1,28 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Assignment3;
+
+import becker.robots.City;
+import becker.robots.Direction;
+import becker.robots.RobotSE;
+import java.awt.Color;
+
+/**
+ *
+ * @author mathg8825
+ */
+public class A3Q3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+                City ovo = new City();
+        //put a robot in my city
+        RobotSE drake = new RobotSE(ovo, 2, 2, Direction.EAST);
+        drake.setColor(Color.red); //make drake red
+    }
+}
