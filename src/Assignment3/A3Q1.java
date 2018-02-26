@@ -24,9 +24,9 @@ public class A3Q1 {
            //create a city for the robot
         City ovo = new City();
         //put a robot in my city
-        RobotSE drake = new RobotSE(ovo, 0, 2, Direction.WEST);
+        RobotSE drake = new RobotSE(ovo, 0, 3, Direction.WEST);
         drake.setColor(Color.red); //make drake red
-        
+        //make the square
         new Wall(ovo, 1, 1, Direction.NORTH);
         new Wall(ovo, 1, 2, Direction.NORTH);
         new Wall(ovo, 1, 1, Direction.WEST);
@@ -35,7 +35,22 @@ public class A3Q1 {
         new Wall(ovo, 2, 2, Direction.EAST);
         new Wall(ovo, 2, 1, Direction.SOUTH);
         new Wall(ovo, 2, 2, Direction.SOUTH);
-        
-        int x = 2;
+        //set a value to x
+        int x = 0;
+    
+     /*when x is less than two move around the square. After one whole roation
+        around the square the variable x is increased by one that way it only 
+        moves around the square 2 times.*/
+        while(x < 2){
+            drake.move(3);
+        drake.turnLeft();
+        drake.move(3);
+        drake.turnLeft();
+        drake.move(3);
+        drake.turnLeft();
+        drake.move(3);
+        drake.turnLeft();
+        x++;
+    }
     }
 }
