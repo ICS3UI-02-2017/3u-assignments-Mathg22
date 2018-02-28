@@ -21,14 +21,14 @@ public class Challenge {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-           //create a city for the robot
+        //create a city for the robot
         City ovo = new City();
         //put a robot in my city
         RobotSE drake = new RobotSE(ovo, 0, 0, Direction.EAST);
         drake.setColor(Color.red); //make drake red\
-        
-        new Wall(ovo, 0, 1, Direction.EAST );
-        
-        
+
+        new Wall(ovo, 0, 1, Direction.EAST);
+
+
     }
 }

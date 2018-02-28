@@ -62,10 +62,10 @@ public class A3Q4 {
         new Wall(ovo, 5, 5, Direction.EAST);
         new Wall(ovo, 5, 5, Direction.SOUTH);
         new Wall(ovo, 5, 4, Direction.SOUTH);
-/*drake. will move around the first square then continue forward and repeat that 
- 4 times to go around all 4 of the squares. 
+        /*drake. will move around the first square then continue forward and repeat that 
+         4 times to go around all 4 of the squares. 
  
- */
+         */
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 3; x++) {
                 drake.move(3);
