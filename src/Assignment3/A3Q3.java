@@ -26,19 +26,19 @@ public class A3Q3 {
         RobotSE drake = new RobotSE(ovo, 1, 1, Direction.EAST, 20);
         drake.setColor(Color.red); //make drake red
         //set x to 0
-       // int x = 0;
+        // int x = 0;
         /*drake will put down five things then move down to the next row and put another five
          until he runs out of things and makes a 5 by 4 rectangle of things.*/
-      while(drake.countThingsInBackpack()>0){
-        for(int x=0; x<5; x++){
-            drake.putThing();
-            drake.move();  
+        while (drake.countThingsInBackpack() > 0) {
+            for (int x = 0; x < 5; x++) {
+                drake.putThing();
+                drake.move();
+            }
+            drake.turnAround();
+            drake.move(5);
+            drake.turnLeft();
+            drake.move();
+            drake.turnLeft();
         }
-        drake.turnAround();
-        drake.move(5);
-        drake.turnLeft();
-        drake.move();
-        drake.turnLeft();
-      }
-}
+    }
 }
