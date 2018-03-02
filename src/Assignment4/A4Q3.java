@@ -17,14 +17,15 @@ public class A4Q3 {
      */
     public static void main(String[] args) {
 
-         //use a Scanner to read info
+        //use a Scanner to read the lines in order 
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter in 4 numbers on separate lines:");
+        //use strings to store the numbers 
         String firstline = input.nextLine();
         String secondline = input.nextLine();
         String thirdline = input.nextLine();
         String fourthline = input.nextLine();
-        
-        System.out.println("Your numbers were "+ firstline +"," + secondline +"," + thirdline+",and " + fourthline);
+        //use the strings to tell the user the numbers
+        System.out.println("Your numbers were " + firstline + "," + secondline + "," + thirdline + ",and " + fourthline);
     }
 }
