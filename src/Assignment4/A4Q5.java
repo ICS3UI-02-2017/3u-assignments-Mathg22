@@ -64,7 +64,12 @@ public class A4Q5 {
         System.out.println("Test 4: "+percent4+"%");
         System.out.println("");
         System.out.println("Test 5: "+percent5+"%");
-        System.out.println("");
+      
         
+        double average = percent1 + percent2 + percent3 + percent4 + percent5 ;
+        average /= 5;  
+        
+        
+        System.out.println("Average:"+ average+"%");
     }
 }
