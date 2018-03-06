@@ -47,30 +47,30 @@ public class A4Q5 {
         System.out.println("What mark did you get?: ");
         double mark5 = input.nextDouble();
         System.out.println();
-        
-        System.out.println("Test scores for "+name);
+
+        System.out.println("Test scores for " + name);
         //calculating the percent for each test
-        double percent1 = mark1/test1 * 100;
-        double percent2 = mark2/test2 * 100;
-        double percent3 = mark3/test3 * 100;
-        double percent4 = mark4/test4 * 100;
-        double percent5 = mark5/test5 * 100;
+        double percent1 = mark1 / test1 * 100;
+        double percent2 = mark2 / test2 * 100;
+        double percent3 = mark3 / test3 * 100;
+        double percent4 = mark4 / test4 * 100;
+        double percent5 = mark5 / test5 * 100;
         //telling the user their results in order
-        System.out.println("Test 1: "+percent1+"%");
+        System.out.println("Test 1: " + percent1 + "%");
         System.out.println("");
-        System.out.println("Test 2: "+percent2+"%");
+        System.out.println("Test 2: " + percent2 + "%");
         System.out.println("");
-        System.out.println("Test 3: "+percent3+"%");
+        System.out.println("Test 3: " + percent3 + "%");
         System.out.println("");
-        System.out.println("Test 4: "+percent4+"%");
+        System.out.println("Test 4: " + percent4 + "%");
         System.out.println("");
-        System.out.println("Test 5: "+percent5+"%");
+        System.out.println("Test 5: " + percent5 + "%");
         System.out.println("");
         //finding the overall average
-        double average = percent1 + percent2 + percent3 + percent4 + percent5 ;
-        average /= 5;  
-        
+        double average = percent1 + percent2 + percent3 + percent4 + percent5;
+        average /= 5;
+
         //telling the user their average
-        System.out.println("Average: "+ average+"%");
+        System.out.println("Average: " + average + "%");
     }
 }
