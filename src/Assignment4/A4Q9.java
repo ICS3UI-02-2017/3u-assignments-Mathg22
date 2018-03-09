@@ -143,34 +143,49 @@ public class A4Q9 extends javax.swing.JFrame {
 
     private void secondTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secondTextActionPerformed
         // TODO add your handling code here:
-        String second = secondText.getText();
-        
-        int secondInteger = Integer.parseInt(second);
+
     }//GEN-LAST:event_secondTextActionPerformed
 
     private void mulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mulActionPerformed
-        
+        String first = firstText.getText();
+        int firstInteger = Integer.parseInt(first);
+        String second = secondText.getText();
+        int secondInteger = Integer.parseInt(second);
+        int answer = firstInteger*secondInteger;
+        result.setText(""+answer);
         
     }//GEN-LAST:event_mulActionPerformed
 
     private void divActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divActionPerformed
-        // TODO add your handling code here:
+        String first = firstText.getText();
+        int firstInteger = Integer.parseInt(first);
+        String second = secondText.getText();
+        int secondInteger = Integer.parseInt(second);
+        int answer = firstInteger/secondInteger;
+        result.setText(""+answer);
     }//GEN-LAST:event_divActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
+        String first = firstText.getText();
+        int firstInteger = Integer.parseInt(first);
+        String second = secondText.getText();
+        int secondInteger = Integer.parseInt(second);
+        int answer = firstInteger+secondInteger;
+        result.setText(""+answer);
     }//GEN-LAST:event_addActionPerformed
 
     private void subActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subActionPerformed
-        // TODO add your handling code here:
+        String first = firstText.getText();
+        int firstInteger = Integer.parseInt(first);
+        String second = secondText.getText();
+        int secondInteger = Integer.parseInt(second);
+        int answer = firstInteger-secondInteger;
+        result.setText(""+answer);
     }//GEN-LAST:event_subActionPerformed
 
     private void firstTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstTextActionPerformed
         // TODO add your handling code here:
-        String first = firstText.getText();
-        
-        int firstInteger = Integer.parseInt(first);
-        
+
     }//GEN-LAST:event_firstTextActionPerformed
 
     /**
