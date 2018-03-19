@@ -21,7 +21,7 @@ public class A5Q1 {
         
         System.out.println("Enter the sentence you wish to translate into Ubbi Dubbi here:");
         String sentence = input.nextLine();
-        
+      //  if(sentence.contains('A'+'E'+'I'+'O'+'U'));
         
     }
 }
