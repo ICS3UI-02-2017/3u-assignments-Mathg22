@@ -46,7 +46,7 @@ public class A5Q1 {
                   //    int index = end.indexOf("a");
                         
                    }
-                    String transword = start + "ub"+end;
+                   // String transword = start + "ub"+end;
                     }
                     //System.out.println(origword+" in Ubbi Dubbi is "+transword);
 
