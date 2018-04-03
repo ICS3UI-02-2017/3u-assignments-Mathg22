@@ -26,14 +26,18 @@ public class A5Q1 {
 
         //   if(origword.contains("e")||origword.contains("a")||origword.contains("i")||
         //        origword.contains("o")||origword.contains("u"))
-        {
+        
             int length = origword.length();
             //use a for loop to go through the characters
-            for (int i = 0; i < length; i++) {
+
+for (int i = 0; i < length; i++) {
                 //look at the character at position , is it a vowel?
                 //   int index = origword.indexOf("b"||"a");
    // String vowel = aeiou ;
-     
+     String start = origword.substring(0, i);                    
+
+String end = origword.substring(i);
+ String transword = start + "ub" + end;
                         if(origword.charAt(i) == 'a'
                         || origword.charAt(i) == 'e'
                         || origword.charAt(i) == 'i'
@@ -41,9 +45,12 @@ public class A5Q1 {
                         || origword.charAt(i) == 'u') {
             
                     //i is the position of the vowel
-String start = origword.substring(0, i);                    
 
-String end = origword.substring(i);
+            if(origword.charAt(i++)=='a'
+                    || origword.charAt(i) == 'e'
+                        || origword.charAt(i) == 'i'
+                        || origword.charAt(i) == 'o'
+                        || origword.charAt(i) == 'u'){
                     int b = end.indexOf("b");
                     if(b>=0){
                         i = b;
@@ -126,19 +133,25 @@ String end = origword.substring(i);
                         i = y;
                     }
                     int z = end.indexOf("z");
+                    if(z>=0){
+                        i = z;
+                    }
+
+                    }
              //       String vowelstart = end.substring(i);
          //           String vowelend = end.substring(i)
-                    
-                    String transword = start + "ub" + end;
-                    System.out.println(origword + " in Ubbi Dubbi is " + transword);
+                                        
 
+                    System.out.println(origword + " in Ubbi Dubbi is " + transword);
+                    
 
 
                 }
+                       
 
             }
-
+    
 
         }
     }
-}
+
