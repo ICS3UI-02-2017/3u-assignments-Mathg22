@@ -38,7 +38,7 @@ while(i<length){
                         || origword.charAt(i) == 'o'
                         || origword.charAt(i) == 'u') {
         
-origword.split(newword);
+//origword.split(newword);
 //origword.split(origword, i);
 
  while(origword.charAt(i) == 'a'
