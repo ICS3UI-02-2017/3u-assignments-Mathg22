@@ -51,7 +51,7 @@ public class Piglatintranslator {
                         //done looking so stop the for loop
                         break;
                     }
-           /* code to help mr for asignment five by Mr. Lamont. char c = origword.charAt(1);
+           /* code to help me for asignment five by Mr. Lamont. char c = origword.charAt(1);
                     if(origword.charAt(1) == 'a')
                     int index = origword.indexOf(")*/
                 }

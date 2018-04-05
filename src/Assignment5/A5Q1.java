@@ -38,8 +38,8 @@ while(i<length){
                         || origword.charAt(i) == 'o'
                         || origword.charAt(i) == 'u') {
         
-//origword.split(newword);
-//origword.split(origword, i);
+i++;
+
 
  while(origword.charAt(i) == 'a'
                         || origword.charAt(i) == 'e'
@@ -48,6 +48,13 @@ while(i<length){
                         || origword.charAt(i) == 'u'){
                 i++;
             }
+ if(origword.charAt(i) != 'a'
+                        || origword.charAt(i) != 'e'
+                        || origword.charAt(i) != 'i'
+                        || origword.charAt(i) != 'o'
+                        || origword.charAt(i) != 'u') {
+        
+i++; }
                         }
           
             }
