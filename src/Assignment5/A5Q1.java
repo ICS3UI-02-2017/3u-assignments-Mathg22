@@ -24,42 +24,52 @@ public class A5Q1 {
 
         origword = origword.toLowerCase();
 
-      int  i = 0;
+   
             int length = origword.length();
             //use a for loop to go through the characters
-
-while(i<length){
-
+String newword = "";
+String ub = "ub";
+         {
+            
+            for(int i=0; i<length; i++){
                 //look at the character at position , is it a vowel?
-    
+    if(origword.charAt(i) != 'a'
+                        || origword.charAt(i) != 'e'
+                        || origword.charAt(i) != 'i'
+                        || origword.charAt(i) != 'o'
+                        || origword.charAt(i) != 'u') {
+                            char letter = origword.charAt(i);
+        newword = newword + letter;
+        
+}
                         if(origword.charAt(i) == 'a'
                         || origword.charAt(i) == 'e'
                         || origword.charAt(i) == 'i'
                         || origword.charAt(i) == 'o'
                         || origword.charAt(i) == 'u') {
-        
-i++;
+                            char letter = origword.charAt(i);
+        newword = ub + letter;
 
+int small = length - 1;
 
  while(origword.charAt(i) == 'a'
                         || origword.charAt(i) == 'e'
                         || origword.charAt(i) == 'i'
                         || origword.charAt(i) == 'o'
-                        || origword.charAt(i) == 'u'){
+                        || origword.charAt(i) == 'u'
+                        && i < small){
                 i++;
+                char newletter = origword.charAt(i);
+        newword = newword + newletter;
             }
- if(origword.charAt(i) != 'a'
-                        || origword.charAt(i) != 'e'
-                        || origword.charAt(i) != 'i'
-                        || origword.charAt(i) != 'o'
-                        || origword.charAt(i) != 'u') {
-        
-i++; }
                         }
+
+                        
           
             }
-    System.out.println(origword + " in Ubbi Dubbi is " );
+    System.out.println(origword + " in Ubbi Dubbi is "+ newword );
 
         }
     }
 
+}
