@@ -22,7 +22,7 @@ public class ArraysExample {
         //make an array to store expenses
         double[] expenses = new double[6];
         //array to store expense names
-        String[] names = {"food","DJ", "hall rental", "decorations", "staff", "misc."};
+        String[] names = {" food "," DJ ", " hall rental ", " decorations ", " staff ", " misc. "};
         //let the user know to get the cost
         System.out.println("Please enter the six costs for prom");
         //use a for loop for input

@@ -50,14 +50,14 @@ String ub = "ub";
                             char letter = origword.charAt(i);
         newword = newword +  ub + letter;
 
-int small = length - 2;
 
- while(origword.charAt(i) == 'a'
+
+ while(i<length&&origword.charAt(i) == 'a'
                         || origword.charAt(i) == 'e'
                         || origword.charAt(i) == 'i'
                         || origword.charAt(i) == 'o'
                         || origword.charAt(i) == 'u'
-                        && i < small
+                        
                         ){
             
      i++;
