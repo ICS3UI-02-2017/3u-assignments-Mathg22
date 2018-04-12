@@ -21,11 +21,20 @@ public class A6Q1 {
         int i = input.nextInt();
         
         double[] marks = new double[i];
-        Double d = new Double(i);
-        for(int a = 0; a < marks.length; a++){
-            marks[a] = input.nextDouble();
+        System.out.println("Please enter the marks");
+        //use a for loop for input
+        for(int m = 0; m < marks.length; i++){
+            marks[i] = input.nextDouble();
+            
         }
-        double average = 0;
-       // average = marks/d;
+     //adding all the expenses
+        
+        for(int a = 0; a< marks.length; a++){
+        double grade = marks[i];
+        
+        
+        
+    }
+        
     }
 }
