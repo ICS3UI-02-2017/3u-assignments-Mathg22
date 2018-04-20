@@ -22,16 +22,32 @@ public class A6Q4 {
         for (int i = 0; i < marks.length; i++) {
             marks[i] = input.nextInt();
         }
-        
-        for (int i = 0; i < marks.length; i++) {
-            int AA = marks[i];
-            int AB = marks[(i+1)];
-            if(marks[i]>marks[(i+1)]){
-                marks[i] = AB;
-            marks[(i+1)] = AA;
+        int b = 9;
+        for (int c = 0; c < 9; c++) {
+            for (int i = c; i < 9; i++) {
+                int AA = marks[i];
+                int AB = marks[(i + 1)];
+                int a = (i + 1);
+                if (marks[i] > marks[(a)]) {
+                    marks[i] = AB;
+                    marks[(i + 1)] = AA;
+                    if (i > 1) {
+                        for (int x = (i - 1); x < 9; x++) {
+                            AA = marks[x];
+                            AB = marks[(x + 1)];
+                            a = (x + 1);
+                            if (marks[i] > marks[(a)]) {
+                                marks[x] = AB;
+                                marks[(x + 1)] = AA;
+
+                            }
+                        }
+                    }
+                }
+
             }
         }
-        System.out.println("The marks in ascending order is "+ marks[0]+" "+ marks[1]+" "+ marks[2]+" "+ marks[3]+" "
-                + marks[4]+" "+ marks[5]+" "+ marks[6]+" "+ marks[7]+" "+ marks[8]+" "+ marks[9]);
+        System.out.println("The marks in ascending order is " + marks[0] + " " + marks[1] + " " + marks[2] + " " + marks[3] + " "
+                + marks[4] + " " + marks[5] + " " + marks[6] + " " + marks[7] + " " + marks[8] + " " + marks[9]);
     }
 }
