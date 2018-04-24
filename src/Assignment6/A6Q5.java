@@ -18,7 +18,9 @@ public class A6Q5 {
     public static void main(String[] args) {
         //set input as scanner to read info
         Scanner input = new Scanner(System.in);
+        //ask the user how many marks are wanted
         System.out.println("How many marks do you wish to enter?");
+        //created variable to be the desired amount of marks
         int v = input.nextInt();
         //created array to hold the desired amount of marks
         int[] marks = new int[v];
@@ -63,9 +65,16 @@ public class A6Q5 {
             }
             
         }
-        //tell the user the marks in ascending order
-        System.out.println("The marks in ascending order is " + marks[0] + " " + marks[1] + " " + marks[2] + " " + marks[3] + " "
-                + marks[4] + " " + marks[5] + " " + marks[6] + " " + marks[7] + " " + marks[8] + " " + marks[9]);
+        //using a for loop tell the user the marks in ascending order
+        System.out.println("The marks in ascending order is ");
+        for(v = 0; v< marks.length; v++){
+            System.out.println(""+marks[v]);
+            for(int count = 0; count < marks.length; count++){
+                int counts = marks[count];
+                int sum =0;
+                sum = sum +counts;
+            }
+        }
     }
     
 }
