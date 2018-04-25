@@ -32,9 +32,9 @@ public class A6Q5 {
         }
         //varaible created that is one less than array length to be used to limit for loops
         int c = marks.length - 1;
-            /*use a for loop to analyze each mark in the array by starting at the start of the 
-            array and going up by one to the end and switching the values where 
-            need to make the array in ascending order*/
+        /*use a for loop to analyze each mark in the array by starting at the start of the 
+         array and going up by one to the end and switching the values where 
+         need to make the array in ascending order*/
         for (int i = 0; i < c; i++) {
             //varaible to store the mark at the position i in the array
             int AA = marks[i];
@@ -48,8 +48,8 @@ public class A6Q5 {
                 marks[(i + 1)] = AA;
             }
             /*use a for loop to analyze each mark in the array by starting at the end of the 
-            array and going down by one to the start and switching the values where 
-            need to make the array in ascending order*/ 
+             array and going down by one to the start and switching the values where 
+             need to make the array in ascending order*/
             for (int d = c; d > 0; d--) {
                 //varaible to store the mark at the position d in the array
                 AA = marks[d];
@@ -63,18 +63,28 @@ public class A6Q5 {
                     marks[(d - 1)] = AA;
                 }
             }
-            
+
         }
         //using a for loop tell the user the marks in ascending order
-        System.out.println("The marks in ascending order is ");
-        for(v = 0; v< marks.length; v++){
-            System.out.println(""+marks[v]);
-            for(int count = 0; count < marks.length; count++){
-                int counts = marks[count];
-                int sum =0;
-                sum = sum +counts;
-            }
+        System.out.println("The marks in ascending order are ");
+        for (v = 0; v < marks.length; v++) {
+            System.out.println("" + marks[v]);
         }
+        //varaible to store the median value
+        double median = 0;
+        //if the length of the array is an even number then perform the needed actions to find the median
+        if (marks.length % 2 == 0) {
+            int m = marks.length / 2;
+            int n = m - 1;
+            //add the numbers at the two most middle spots of the array and divide by 2 to find the median
+            median = (marks[m] + marks[n]) / 2.0;
+        }
+        //if the length of the array is an odd number then perform the needed actions to find the median
+        if (marks.length % 2 != 0) {
+            int m = marks.length / 2;
+            median = marks[m];
+        }
+        //tell the user the median
+        System.out.println("The median is " + median);
     }
-    
 }
