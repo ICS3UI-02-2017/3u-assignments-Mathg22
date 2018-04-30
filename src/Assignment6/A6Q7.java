@@ -22,39 +22,48 @@ public class A6Q7 {
             for(int i = 0; i<1000; i++){
                 numbers[i] = true;
             }
-            
-      //   for( int i = 0; i<999; i++){
-       //      n[i] = n[i] +1 ;
-       //  }
+            numbers[0]= false;
+            numbers[1]=false;
+         for( int i = 0; i<999; i++){
+             n[i] = i ;
+        }
         
        int p = 0;
-       for( int i=2; i<999; i++){
-          int number = n[i];
+       for( int i=3; i<999; i++){
+          int number = n[(i+1)];
            if(number % 2 ==0 ){
                numbers[i] = false; 
            }
            }
-           for( int i=3; i<1000; i++){
-          int number = n[i];
+           for( int i=4; i<999; i++){
+          int number = n[(i+1)];
            if(number % 3 ==0 ){
                numbers[i] = false; 
            
            }
            }
-           for( int i=5; i<1000; i++){
-          int number = n[i];
+           for( int i=6; i<999; i++){
+          int number = n[(i+1)];
            if(number % 5 ==0 ){
                numbers[i] = false; 
            
            }
            }
            
-           for( int i=7; i<1000; i++){
-          int number = n[i];
-           if(number % 3 ==0 ){
-               numbers[7] = false; 
+           for( int i=8; i<999; i++){
+               
+          int number = n[(i+1)];
+           if(number % 7 ==0 ){
+               numbers[i] = false; 
            
            }
+           
+           }
+           System.out.println("The prime numbers are ");
+           for(int i = 2; i<1000; i++){
+               if(numbers[i]= true){
+                   System.out.println(""+n[i]);
+               }
            }
     }
 }
