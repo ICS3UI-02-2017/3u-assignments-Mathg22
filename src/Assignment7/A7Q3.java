@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author mathg8825
  */
 public class A7Q3 {
-
+//method to determine the factors of any given integer
     public static void factors() {
         Scanner input = new Scanner(System.in);
         //create a varaible to represent the number desired by the user
