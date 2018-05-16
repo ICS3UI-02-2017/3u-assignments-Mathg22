@@ -24,30 +24,29 @@ public class A8Q1_Face extends JComponent implements ActionListener {
     // Height and Width of our game
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
-
     //Title of the window
     String title = "My Game";
-
     // sets the framerate and delay for our game
     // this calculates the number of milliseconds per frame
     // you just need to select an approproate framerate
     int desiredFPS = 60;
     int desiredTime = Math.round((1000 / desiredFPS));
-    
     // timer used to run the game loop
     // this is what keeps our time running smoothly :)
     Timer gameTimer;
-
     // YOUR GAME VARIABLES WOULD GO HERE
-    Color white = new Color(255,255,255);
+    Color green = new Color(91, 214, 64);
+Color skyblue = new Color(94, 202, 242);
+    int eye = 80;
+    int sunx = 0;
+    int sunMove = 3;
+    int eyeMove = 1;
 
 
     // GAME VARIABLES END HERE    
-
-    
     // Constructor to create the Frame and place the panel in
     // You will learn more about this in Grade 12 :)
-    public A8Q1_Face(){
+    public A8Q1_Face() {
         // creates a windows to show my game
         JFrame frame = new JFrame(title);
 
@@ -70,7 +69,7 @@ public class A8Q1_Face extends JComponent implements ActionListener {
         this.addMouseWheelListener(m);
         this.addMouseListener(m);
         //sets up the game loop
-        gameTimer = new Timer(desiredTime,this);
+        gameTimer = new Timer(desiredTime, this);
         gameTimer.setRepeats(true);
         gameTimer.start();
     }
@@ -80,26 +79,52 @@ public class A8Q1_Face extends JComponent implements ActionListener {
     // NOTE: This is already double buffered!(helps with framerate/speed)
     @Override
     public void paintComponent(Graphics g) {
+        // GAME DRAWING GOES HERE
         // always clear the screen first!
         g.clearRect(0, 0, WIDTH, HEIGHT);
-        
-                      g.setColor(Color.WHITE);
+
+        g.setColor(green);
         //custom background
         g.fillRect(0, 0, WIDTH, HEIGHT);
-        // GAME DRAWING GOES HERE
-       g.setColor(Color.BLACK);
-        	//(x,y,width, height
-        g.drawOval(200, 100, 450, 450);
+        
+        g.setColor(skyblue);
+        g.fillRect(0, 0, WIDTH, 450);
+        
+        g.setColor(Color.YELLOW);
+        g.fillOval(sunx, 0, 125, 125);
+        
+        
+        g.setColor(Color.WHITE);
+        //(x,y,width, height
+        //head
+        g.fillOval(200, 100, 450, 450);
+        //black patches around eyes
+        g.setColor(Color.BLACK);
         g.fillOval(275, 200, 125, 125);
         g.fillOval(450, 200, 125, 125);
+        //ears
         g.fillOval(525, 50, 125, 160);
         g.fillOval(200, 50, 125, 160);
+        //eyes
         g.setColor(Color.WHITE);
-      g.fillOval(310, 225, 60, 80);
-      g.fillOval(485, 225, 60, 80);
-      g.setColor(Color.BLACK);
-      g.fillOval(330, 250, 30, 40);
-      g.fillOval(505, 250, 30, 40);
+        g.fillOval(310, 225, 60, 80);
+        g.fillOval(485, 225, 60, 80);
+        g.setColor(Color.BLACK);
+        g.fillRect(310, 225, 60, 80);
+        //pupils
+        g.fillOval(330, 250, 30, 40);
+        g.fillOval(505, 250, 30, 40);
+        //mouth
+        g.fillArc(275, 300, 300, 200, 180, 180);
+        //nose
+        int[] triangleX = {425, 400, 450};
+        int[] triangleY = {350, 375, 375};
+        g.drawPolygon(triangleX, triangleY, 3);
+        g.setColor(Color.PINK);
+        g.fillPolygon(triangleX, triangleY, 3);
+        //tongue
+        g.setColor(Color.RED);
+        g.fillOval(425, 440, 100, 50);
         // GAME DRAWING ENDS HERE
     }
 
@@ -107,13 +132,26 @@ public class A8Q1_Face extends JComponent implements ActionListener {
     // This is run before the game loop begins!
     public void preSetup() {
         // Any of your pre setup before the loop starts should go here
-
     }
 
     // The main game loop
     // In here is where all the logic for my game will go
     public void gameLoop() {
+        sunx = sunx + sunMove;
         
+        if(sunx > 600){
+            sunMove = -3;
+        }
+        if(sunx < 0){
+            sunMove = 3;
+        }
+        eye = eye + eyeMove;
+        if(eye> 305){
+            eyeMove = -1;           
+        }
+        if(eye<225){
+            eyeMove = +1;
+        }
     }
 
     // Used to implement any of the Mouse Actions
@@ -122,25 +160,21 @@ public class A8Q1_Face extends JComponent implements ActionListener {
         // if a mouse button has been pressed down
         @Override
         public void mousePressed(MouseEvent e) {
-
         }
 
         // if a mouse button has been released
         @Override
         public void mouseReleased(MouseEvent e) {
-
         }
 
         // if the scroll wheel has been moved
         @Override
         public void mouseWheelMoved(MouseWheelEvent e) {
-
         }
 
         // if the mouse has moved positions
         @Override
         public void mouseMoved(MouseEvent e) {
-
         }
     }
 
@@ -150,13 +184,11 @@ public class A8Q1_Face extends JComponent implements ActionListener {
         // if a key has been pressed down
         @Override
         public void keyPressed(KeyEvent e) {
-
         }
 
         // if a key has been released
         @Override
         public void keyReleased(KeyEvent e) {
-
         }
     }
 
