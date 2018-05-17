@@ -37,11 +37,14 @@ public class A8Q1_Face extends JComponent implements ActionListener {
     // YOUR GAME VARIABLES WOULD GO HERE
     Color green = new Color(91, 214, 64);
 Color skyblue = new Color(94, 202, 242);
-    int eye = 80;
+    int eyex = 80;
     int sunx = 0;
     int sunMove = 3;
-    int eyeMove = 1;
-
+    int eyeMove = 2;
+    int mouthy = 500;
+    int mouthx = -1;
+    int mouthh = 10;
+    int movemouth = 1;
 
     // GAME VARIABLES END HERE    
     // Constructor to create the Frame and place the panel in
@@ -110,13 +113,16 @@ Color skyblue = new Color(94, 202, 242);
         g.fillOval(310, 225, 60, 80);
         g.fillOval(485, 225, 60, 80);
         g.setColor(Color.BLACK);
-        g.fillRect(310, 225, 60, 80);
+        g.fillRect(310, 220, 60, eyex);
         //pupils
         g.fillOval(330, 250, 30, 40);
         g.fillOval(505, 250, 30, 40);
         //mouth
         g.fillArc(275, 300, 300, 200, 180, 180);
+        g.setColor(Color.green);
+        g.fillRect(275, mouthy, 300, mouthh);
         //nose
+        g.setColor(Color.BLACK);
         int[] triangleX = {425, 400, 450};
         int[] triangleY = {350, 375, 375};
         g.drawPolygon(triangleX, triangleY, 3);
@@ -145,13 +151,29 @@ Color skyblue = new Color(94, 202, 242);
         if(sunx < 0){
             sunMove = 3;
         }
-        eye = eye + eyeMove;
-        if(eye> 305){
-            eyeMove = -1;           
+        eyex = eyex + eyeMove;
+        if(eyex> 90){
+            eyeMove = -2;           
         }
-        if(eye<225){
-            eyeMove = +1;
+        if(eyex<10){
+            eyeMove = +2;
         }
+        mouthy = mouthy +mouthx;
+        if(mouthy< 390 ){
+            mouthx = 1;
+        }
+        if(mouthy>490){
+            mouthx = -1;
+                    
+        }
+        mouthh = mouthh + movemouth;
+        if(mouthh>120){
+            movemouth = -1;
+        }
+        if(mouthh<0){
+            movemouth = 1;
+        }
+        
     }
 
     // Used to implement any of the Mouse Actions
