@@ -198,12 +198,17 @@ public class PongExample extends JComponent implements ActionListener {
         public void keyPressed(KeyEvent e) {
 int keyCode = e.getKeyCode();
 if(keyCode ==KeyEvent.VK_W){
-    paddle1Up = true;
+    paddle1Up = false;
 }else if(keyCode ==KeyEvent.VK_W){
 paddle1Down = false;
 }
 //player 2
 
+if(keyCode ==KeyEvent.VK_UP){
+    paddle2Up = false;
+}else if(keyCode ==KeyEvent.VK_UP){
+paddle2Down = false;
+}
         }
 
         // if a key has been released
