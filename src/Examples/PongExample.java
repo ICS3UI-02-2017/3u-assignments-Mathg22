@@ -2,6 +2,7 @@ package Examples;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -53,6 +54,11 @@ public class PongExample extends JComponent implements ActionListener {
     boolean paddle2Up = false;
     boolean paddle2Down = false;
     int paddleSpeed = 5;
+    //scores
+    int score1 = 0;
+    int score2 = 0;
+    //create a custom font
+    Font biggerFont = new Font("arial", Font.BOLD, 36);
     
     // GAME VARIABLES END HERE    
 
@@ -103,6 +109,10 @@ public class PongExample extends JComponent implements ActionListener {
         g.setColor(Color.WHITE);
         g.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
         g.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
+       //scores
+        g.setFont(biggerFont);
+       g.drawString(""+score1, WIDTH/2 - 150, 50);
+       g.drawString(""+score2, WIDTH/2 + 150, 50);
         //draw the ball
         g.fillRect(ball.x, ball.y, ball.width, ball.height);
         
@@ -131,21 +141,28 @@ public class PongExample extends JComponent implements ActionListener {
         double newAngle = Math.toRadians(ballAngle);
         //convert how much to move x ball 
         
-        double movex = ballSpeed*Math.cos(newAngle);
-        double movey = ballSpeed*Math.sin(newAngle);
+        double moveX = ballSpeed*Math.cos(newAngle);
+        double moveY = ballSpeed*Math.sin(newAngle);
         //moving the ball
-        ball.x = ball.x +(int)movex;
-        ball.y = ball.y+ (int)movey;
+        ball.x = ball.x +(int)moveX;
+        ball.y = ball.y+ (int)moveY;
         
         
     }
 
     private void movePaddles() {
+        //player one
         if(paddle1Up){
             paddle1.y = paddle1.y - paddleSpeed;
         }else if(paddle1Down){
         paddle1.y = paddle1.y + paddleSpeed;
         }
+         if(paddle1.y < 0){
+             paddle1.y = 0;
+         }else if(paddle1.y + paddle1.height > HEIGHT){
+             paddle1.y = HEIGHT - paddle1.height;
+         }
+        
         //controls player two
         if(paddle2Up){
             paddle2.y = paddle2.y - paddleSpeed;
@@ -157,9 +174,49 @@ public class PongExample extends JComponent implements ActionListener {
     }
 
     private void checkForCollision() {
+    //collision with bottom/top
+        //top
+        if(ball.y<0){
+            ballAngle = ballAngle * -1;
+        }
+    //bottom
+        if((ball.y + ball.height) > HEIGHT){
+            ballAngle = ballAngle * -1;
+        }
+        //does ball hit paddle 1
+        if(ball.intersects(paddle1)){
+            if(ball.y> paddle1.y && ball.y +ball.height < paddle1.y ){
+                
+            }else{
+                //make sure we don't go over 360 degrees
+            ballAngle = (180 + ballAngle * -1)% 360;
+        }
+        }
+        //does ball hit paddle 2
+        //if(b1.x > b2.x + b2.width || b1.x + b1.width < b2.x || b1.y > b2.y + b2.height||b1.y + 
+        if(ball.intersects(paddle2)){
+            ballAngle = (180 + ballAngle * -1) %360;
+        }
+        
     }
 
     private void checkForGoal() {
+        //ball off left hand side
+        if(ball.x<0){
+        score2 ++;
+        ball.x = WIDTH/2 - ball.width/2;
+        ball.y = HEIGHT/2 - ball.height/2;
+        
+    }
+        //ball hits right hand side
+        if(ball.x + ball.width > WIDTH){
+        score1 ++;
+        ball.x = WIDTH/2 - ball.width/2;
+        ball.y = HEIGHT/2 - ball.height/2;
+        
+    }
+        
+        
     }
 
     // Used to implement any of the Mouse Actions
@@ -196,25 +253,40 @@ public class PongExample extends JComponent implements ActionListener {
         // if a key has been pressed down
         @Override
         public void keyPressed(KeyEvent e) {
-int keyCode = e.getKeyCode();
-if(keyCode ==KeyEvent.VK_W){
-    paddle1Up = false;
-}else if(keyCode ==KeyEvent.VK_W){
-paddle1Down = false;
+
+            int keyCode = e.getKeyCode();
+//paddle 1
+            if(keyCode ==KeyEvent.VK_W){
+    paddle1Up = true;
+}else if(keyCode ==KeyEvent.VK_S){
+paddle1Down = true;
 }
-//player 2
+//paddle 2
 
 if(keyCode ==KeyEvent.VK_UP){
-    paddle2Up = false;
-}else if(keyCode ==KeyEvent.VK_UP){
-paddle2Down = false;
+    paddle2Up = true;
+}else if(keyCode ==KeyEvent.VK_DOWN){
+paddle2Down = true;
 }
         }
 
         // if a key has been released
         @Override
         public void keyReleased(KeyEvent e) {
+//paddle 1
+            int keyCode = e.getExtendedKeyCode();
+            if(keyCode ==KeyEvent.VK_W){
+    paddle1Up = false;
+}else if(keyCode ==KeyEvent.VK_S){
+paddle1Down = false;
+}
+//paddle 2
 
+if(keyCode ==KeyEvent.VK_UP){
+    paddle2Up = false;
+}else if(keyCode ==KeyEvent.VK_DOWN){
+paddle2Down = false;
+}
         }
     }
 
