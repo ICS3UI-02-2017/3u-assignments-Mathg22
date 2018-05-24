@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -38,7 +39,7 @@ public class A8_Game extends JComponent implements ActionListener {
     Timer gameTimer;
 
     // YOUR GAME VARIABLES WOULD GO HERE
-    
+    Rectangle paddle1 = new Rectangle(200, 200, 25, 150) ;
 
 
     // GAME VARIABLES END HERE    
@@ -83,7 +84,10 @@ public class A8_Game extends JComponent implements ActionListener {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE
-        
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
+        g.setColor(Color.WHITE);
+        g.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
 		
 		
         // GAME DRAWING ENDS HERE
@@ -94,6 +98,7 @@ public class A8_Game extends JComponent implements ActionListener {
     public void preSetup() {
         // Any of your pre setup before the loop starts should go here
 
+        
     }
 
     // The main game loop
