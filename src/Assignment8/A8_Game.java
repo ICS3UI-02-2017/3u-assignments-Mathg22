@@ -39,8 +39,10 @@ public class A8_Game extends JComponent implements ActionListener {
     Timer gameTimer;
 
     // YOUR GAME VARIABLES WOULD GO HERE
-    Rectangle paddle1 = new Rectangle(200, 200, 25, 150) ;
+    Rectangle paddle1 = new Rectangle(200, 225 , 25, 150) ;
+    Rectangle paddle2 = new Rectangle(600, 225, 25, 150);
 
+    Rectangle ball = new Rectangle(390, 290, 20, 20);
 
     // GAME VARIABLES END HERE    
 
@@ -84,12 +86,17 @@ public class A8_Game extends JComponent implements ActionListener {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE
+        
+        //set background color
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, WIDTH, HEIGHT);
+        //created paddles and ball
         g.setColor(Color.WHITE);
         g.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
-		
-		
+	g.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
+	g.fillRect(ball.x, ball.y, ball.width, ball.height);
+        
+        
         // GAME DRAWING ENDS HERE
     }
 
@@ -104,7 +111,26 @@ public class A8_Game extends JComponent implements ActionListener {
     // The main game loop
     // In here is where all the logic for my game will go
     public void gameLoop() {
-        
+        ballMove();
+        paddlesMove();
+        paddleBallCollision();
+        brickCollision();
+    }
+
+    private void ballMove() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void paddlesMove() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void paddleBallCollision() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void brickCollision() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     // Used to implement any of the Mouse Actions
