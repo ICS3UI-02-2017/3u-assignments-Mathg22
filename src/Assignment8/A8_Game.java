@@ -48,11 +48,21 @@ public class A8_Game extends JComponent implements ActionListener {
     boolean paddle2Up = false;
     boolean paddle2Down = false;
     int paddleSpeed = 5;
-    //brick variables
-    Rectangle[] brickLeft = new Rectangle[20];
-    Rectangle[] brickRight = new Rectangle[20];
-    int brickY = 5;
-    int brickX = 0;
+    //Left brick variables
+    Rectangle[] brickLeft1 = new Rectangle[21];
+    Rectangle[] brickLeft2 = new Rectangle[16];
+    int brickLY1 = 5;
+    int brickLX1 = 20;
+    int brickLY2 = -40;
+    int brickLX2 = 45;
+    //Right brick variables
+    Rectangle[] brickRight1 = new Rectangle[21];
+    Rectangle[] brickRight2 = new Rectangle[16];
+    int brickRY1 = 5;
+    int brickRX1 = 760;
+    int brickRY2 = -40;
+    int brickRX2 = 735;
+    
 
     // GAME VARIABLES END HERE    
     // Constructor to create the Frame and place the panel in
@@ -103,10 +113,23 @@ public class A8_Game extends JComponent implements ActionListener {
         g.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
         g.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
         g.fillRect(ball.x, ball.y, ball.width, ball.height);
-        for (int i = 0; i < brickLeft.length; i++) {
-            g.setColor(Color.GREEN);
-            g.fillRect(brickLeft[i].x, brickLeft[i].y, brickLeft[i].width, brickLeft[i].height);
+        //created bricks on left side
+        g.setColor(Color.GREEN);
+        for (int i = 0; i < brickLeft1.length; i++) {
+            g.fillRect(brickLeft1[i].x, brickLeft1[i].y, brickLeft1[i].width, brickLeft1[i].height);
         }
+        for (int i = 0; i < brickLeft2.length; i++) {
+            g.fillRect(brickLeft2[i].x, brickLeft2[i].y, brickLeft2[i].width, brickLeft2[i].height);
+        }
+        //created bricks on right side
+        for (int i = 0; i < brickRight1.length; i++) {
+            g.fillRect(brickRight1[i].x, brickRight1[i].y, brickRight1[i].width, brickRight1[i].height);
+        }
+        for (int i = 0; i < brickRight2.length; i++) {
+            g.fillRect(brickRight2[i].x, brickRight2[i].y, brickRight2[i].width, brickRight2[i].height);
+        }
+        
+        
         // GAME DRAWING ENDS HERE
     }
 
@@ -114,15 +137,64 @@ public class A8_Game extends JComponent implements ActionListener {
     // This is run before the game loop begins!
     public void preSetup() {
         // Any of your pre setup before the loop starts should go here
-        for (int i = 0; i < brickLeft.length; i++) {
+        //First column of alternating bricks on left side
+        for (int i = 0; i < brickLeft1.length; i++) {
 
-            brickLeft[i] = new Rectangle(20, brickY, 20, 110);
+            brickLeft1[i] = new Rectangle(brickLX1, brickLY1, 20, 80);
 
-            if (brickY < HEIGHT) {
-                brickY = brickY + 115;
+            
+                brickLY1 = brickLY1 + 85;
+            
+            if(brickLY1 >= HEIGHT){
+                brickLY1 = 5;
+                brickLX1 = brickLX1 + 50;
+            }
+        }
+            //second column of alternating bricks on left side
+            for (int a = 0; a < brickLeft2.length; a++) {
+
+            brickLeft2[a] = new Rectangle(brickLX2, brickLY2, 20, 80);
+
+            
+                brickLY2 = brickLY2 + 85;
+            
+            if(brickLY2 >= HEIGHT){
+                brickLY2 = -40;
+                brickLX2 = brickLX2 + 50;
             }
             
         }
+    
+            //First column of bricks on right side
+            
+            for (int i = 0; i < brickRight1.length; i++) {
+
+            brickRight1[i] = new Rectangle(brickRX1, brickRY1, 20, 80);
+
+            
+                brickRY1 = brickRY1 + 85;
+            
+            if(brickRY1 >= HEIGHT){
+                brickRY1 = 5;
+                brickRX1 = brickRX1 - 50;
+            }
+        }
+            //second column of alternating bricks on right side
+            for (int a = 0; a < brickRight2.length; a++) {
+
+            brickRight2[a] = new Rectangle(brickRX2, brickRY2, 20, 80);
+
+            
+                brickRY2 = brickRY2 + 85;
+            
+            if(brickRY2 >= HEIGHT){
+                brickRY2 = -40;
+                brickRX2 = brickRX2 - 50;
+            }
+            
+        }
+            
+            
     }
 
     // The main game loop
@@ -174,9 +246,36 @@ public class A8_Game extends JComponent implements ActionListener {
     }
 
     private void paddleBallCollision() {
+        //collision with bottom/top
+        //top
+        if(ball.y<0){
+            ballAngle1 = ballAngle1 * -1;
+        }
+    //bottom
+        if((ball.y + ball.height) > HEIGHT){
+            ballAngle1 = ballAngle1 * -1;
+        }
+        //does ball hit paddle 1
+        if(ball.intersects(paddle1)){
+            if(ball.y> paddle1.y && ball.y +ball.height < paddle1.y ){
+                
+            }else{
+                //make sure we don't go over 360 degrees
+            ballAngle1 = (180 + ballAngle1 * -1)% 360;
+        }
+        }
+        //does ball hit paddle 2
+        //if(b1.x > b2.x + b2.width || b1.x + b1.width < b2.x || b1.y > b2.y + b2.height||b1.y + 
+        if(ball.intersects(paddle2)){
+            ballAngle1 = (180 + ballAngle1 * -1) %360;
+        }
+        
     }
 
     private void brickCollision() {
+        
+        
+        
     }
 
     // Used to implement any of the Mouse Actions
