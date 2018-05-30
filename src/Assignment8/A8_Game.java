@@ -204,6 +204,8 @@ public class A8_Game extends JComponent implements ActionListener {
         paddlesMove();
         paddleBallCollision();
         brickCollision();
+        goal();
+        
     }
 
     private void ballMove() {
@@ -270,14 +272,39 @@ public class A8_Game extends JComponent implements ActionListener {
             ballAngle1 = (180 + ballAngle1 * -1) %360;
         }
         
+      /*  if((ball.y <= (paddle1.y + paddle1.height) && paddle1.x < ball.x && ball.y < paddle1.width)
+                || ((ball.y + ball.height >= paddle1.y) && paddle1.x < ball.x 
+                && ball.y < paddle1.width)){
+            ballAngle1 = ballAngle1 * -1;
+        }*/
+        
+                
     }
 
     private void brickCollision() {
         
-        
+ 
+     
+ }
+    
         
     }
 
+    private void goal() {
+                if(ball.x<0){
+       
+        ball.x = WIDTH/2 - ball.width/2;
+        ball.y = HEIGHT/2 - ball.height/2;
+        
+    }
+        //ball hits right hand side
+        if(ball.x + ball.width > WIDTH){
+        
+        ball.x = WIDTH/2 - ball.width/2;
+        ball.y = HEIGHT/2 - ball.height/2;
+       
+    }
+    }
     // Used to implement any of the Mouse Actions
     private class Mouse extends MouseAdapter {
 
