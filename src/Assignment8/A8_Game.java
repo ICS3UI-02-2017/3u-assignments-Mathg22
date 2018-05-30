@@ -288,7 +288,7 @@ public class A8_Game extends JComponent implements ActionListener {
  }
     
         
-    }
+    
 
     private void goal() {
                 if(ball.x<0){
