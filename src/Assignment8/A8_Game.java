@@ -47,7 +47,7 @@ public class A8_Game extends JComponent implements ActionListener {
     boolean paddle1Down = false;
     boolean paddle2Up = false;
     boolean paddle2Down = false;
-    int paddleSpeed = 5;
+    int paddleSpeed = 8;
     //Left brick variables
     Rectangle[] brickLeft1 = new Rectangle[21];
     Rectangle[] brickLeft2 = new Rectangle[16];
@@ -70,7 +70,7 @@ public class A8_Game extends JComponent implements ActionListener {
     public A8_Game() {
         // creates a windows to show my game
         JFrame frame = new JFrame(title);
-
+preSetup();
         // sets the size of my game
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         // adds the game to the window
@@ -89,7 +89,7 @@ public class A8_Game extends JComponent implements ActionListener {
         this.addMouseMotionListener(m);
         this.addMouseWheelListener(m);
         this.addMouseListener(m);
-        preSetup();
+        
         gameTimer = new Timer(desiredTime, this);
         gameTimer.setRepeats(true);
         gameTimer.start();
@@ -259,13 +259,11 @@ public class A8_Game extends JComponent implements ActionListener {
         }
         //does ball hit paddle 1
         if(ball.intersects(paddle1)){
-            if(ball.y> paddle1.y && ball.y +ball.height < paddle1.y ){
-                
-            }else{
+            
                 //make sure we don't go over 360 degrees
             ballAngle1 = (180 + ballAngle1 * -1)% 360;
         }
-        }
+        
         //does ball hit paddle 2
         //if(b1.x > b2.x + b2.width || b1.x + b1.width < b2.x || b1.y > b2.y + b2.height||b1.y + 
         if(ball.intersects(paddle2)){
@@ -277,16 +275,51 @@ public class A8_Game extends JComponent implements ActionListener {
                 && ball.y < paddle1.width)){
             ballAngle1 = ballAngle1 * -1;
         }*/
+        if(ball.y> paddle1.y && ball.y +ball.height < paddle1.y &&  ball.intersects(paddle1) ){
+                ball.y = paddle1.y - ball.height;
+                ballAngle1 = (180 + ballAngle1 * -1)% 360;
+            }
+        
         
                 
     }
 
     private void brickCollision() {
-        
- 
+        /*Detect the ball hitting the first pattern of bricks on the left side 
+         and make the bricks "disapear" by moving it far offscreen*/
+ for(int i = 0; i< brickLeft1.length; i++){
+     if(ball.intersects(brickLeft1[i])){
+         brickLeft1[i].x = -1000;
+         ballAngle1 = (180 + ballAngle1 * -1) %360;
+     }
+ }
+     /*Detect the ball hitting the first pattern of bricks on the right side 
+         and make the bricks "disapear" by moving it far offscreen*/
+          for(int i = 0; i< brickRight1.length; i++){
+     if(ball.intersects(brickRight1[i])){
+         brickRight1[i].x = -1000;
+         ballAngle1 = (180 + ballAngle1 * -1) %360;
+     }
+          }
+     /*Detect the ball hitting the second pattern of bricks on the left side 
+         and make the bricks "disapear" by moving it far offscreen*/
+     for(int i = 0; i< brickLeft2.length; i++){
+     if(ball.intersects(brickLeft2[i])){
+         brickLeft2[i].x = -1000;
+         ballAngle1 = (180 + ballAngle1 * -1) %360;
+     }
+ }
+     /*Detect the ball hitting the second pattern of bricks on the right side 
+         and make the bricks "disapear" by moving it far offscreen*/
+          for(int i = 0; i< brickRight2.length; i++){
+     if(ball.intersects(brickRight2[i])){
+         brickRight2[i].x = -1000;
+         ballAngle1 = (180 + ballAngle1 * -1) %360;
+     }
+     
      
  }
-    
+ }  
         
     
 
