@@ -259,7 +259,10 @@ preSetup();
         }
         //does ball hit paddle 1
         if(ball.intersects(paddle1)){
-            
+            if((ball.y+ball.height> paddle1.y) && (ball.y < paddle1.y+paddle1.height)){
+                ball.y = paddle1.y - (ball.height + 5);
+                ballAngle1 = (180 + ballAngle1 * -1) %360;
+            }
                 //make sure we don't go over 360 degrees
             ballAngle1 = (180 + ballAngle1 * -1)% 360;
         }
@@ -275,10 +278,11 @@ preSetup();
                 && ball.y < paddle1.width)){
             ballAngle1 = ballAngle1 * -1;
         }*/
-        if(ball.y> paddle1.y && ball.y +ball.height < paddle1.y &&  ball.intersects(paddle1) ){
-                ball.y = paddle1.y - ball.height;
+       /* if((ball.y+ball.height> paddle1.y) && (ball.y < paddle1.y+paddle1.height) 
+                &&(ball.x + ball.width < paddle1.x + paddle1.width) && (ball.x >= paddle1.x) ){
+           //     ball.y = paddle1.y - ball.height;
                 ballAngle1 = (180 + ballAngle1 * -1)% 360;
-            }
+            }*/
         
         
                 
