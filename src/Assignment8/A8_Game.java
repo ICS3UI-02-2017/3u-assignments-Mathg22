@@ -41,7 +41,7 @@ public class A8_Game extends JComponent implements ActionListener {
 //ball varaibles
     Rectangle ball = new Rectangle(390, 290, 20, 20);
     int ballAngle1 = 45;
-    int ballSpeed1 = 4;
+    int ballSpeed1 = 6;
     //control variables
     boolean paddle1Up = false;
     boolean paddle1Down = false;
@@ -248,7 +248,7 @@ preSetup();
     }
 
     private void paddleBallCollision() {
-        //collision with bottom/top
+        //collision with bottom/top and paddles
         if(ball.y <= 0 && ball.y + ball.height == paddle1.y){
             ball.x = WIDTH/2 - ball.width/2;
         ball.y = HEIGHT/2 - ball.height/2;
@@ -264,15 +264,28 @@ preSetup();
         }
         //does ball hit paddle 1
 
-        if(ball.intersects(paddle1)){
+        if(ball.intersects(paddle1)&& ball.y> paddle1.y && ball.y+ ball.height < paddle1.y + paddle1.height){
                 //make sure we don't go over 360 degrees
-            ballAngle1 = (180 + ballAngle1 * -1)% 360;
+            ballAngle1 = (180 + ballAngle1 * -1)% 360; 
             
-        }
+        } 
         if(ball.intersects(paddle1)&& ball.y< paddle1.y 
-                && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x){               
+                && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x){ 
+            
             ball.y = paddle1.y - ball.height;
-            ballAngle1 = (180 + ballAngle1 * -1)% 360;
+            
+                ballAngle1 = (180 + ballAngle1 * -1)% 360;
+            
+            }
+            if(ball.intersects(paddle1)&& ball.y + ball.height> paddle1.y + paddle1.height
+                && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x){    
+                
+            ball.y = paddle1.y + paddle1.height + ball.height;
+            
+                ballAngle1 = (180 + ballAngle1 * -1)% 360;
+            
+            
+            
         }
         
         //does ball hit paddle 2
@@ -295,7 +308,7 @@ preSetup();
         
                 
     }
-
+    
     private void brickCollision() {
         /*Detect the ball hitting the first pattern of bricks on the left side 
          and make the bricks "disapear" by moving it far offscreen*/
