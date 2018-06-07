@@ -41,7 +41,7 @@ public class A8_Game extends JComponent implements ActionListener {
 //ball varaibles
     Rectangle ball = new Rectangle(390, 290, 20, 20);
     int ballAngle1 = 45;
-    int ballSpeed1 = 6;
+    int ballSpeed1 = 4;
     //control variables
     boolean paddle1Up = false;
     boolean paddle1Down = false;
@@ -62,7 +62,6 @@ public class A8_Game extends JComponent implements ActionListener {
     int brickRX1 = 760;
     int brickRY2 = -40;
     int brickRX2 = 735;
-    
 
     // GAME VARIABLES END HERE    
     // Constructor to create the Frame and place the panel in
@@ -70,7 +69,7 @@ public class A8_Game extends JComponent implements ActionListener {
     public A8_Game() {
         // creates a windows to show my game
         JFrame frame = new JFrame(title);
-preSetup();
+        preSetup();
         // sets the size of my game
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         // adds the game to the window
@@ -89,7 +88,7 @@ preSetup();
         this.addMouseMotionListener(m);
         this.addMouseWheelListener(m);
         this.addMouseListener(m);
-        
+
         gameTimer = new Timer(desiredTime, this);
         gameTimer.setRepeats(true);
         gameTimer.start();
@@ -128,8 +127,8 @@ preSetup();
         for (int i = 0; i < brickRight2.length; i++) {
             g.fillRect(brickRight2[i].x, brickRight2[i].y, brickRight2[i].width, brickRight2[i].height);
         }
-        
-        
+
+
         // GAME DRAWING ENDS HERE
     }
 
@@ -142,59 +141,59 @@ preSetup();
 
             brickLeft1[i] = new Rectangle(brickLX1, brickLY1, 20, 80);
 
-            
-                brickLY1 = brickLY1 + 85;
-            
-            if(brickLY1 >= HEIGHT){
+
+            brickLY1 = brickLY1 + 85;
+
+            if (brickLY1 >= HEIGHT) {
                 brickLY1 = 5;
                 brickLX1 = brickLX1 + 50;
             }
         }
-            //second column of alternating bricks on left side
-            for (int a = 0; a < brickLeft2.length; a++) {
+        //second column of alternating bricks on left side
+        for (int a = 0; a < brickLeft2.length; a++) {
 
             brickLeft2[a] = new Rectangle(brickLX2, brickLY2, 20, 80);
 
-            
-                brickLY2 = brickLY2 + 85;
-            
-            if(brickLY2 >= HEIGHT){
+
+            brickLY2 = brickLY2 + 85;
+
+            if (brickLY2 >= HEIGHT) {
                 brickLY2 = -40;
                 brickLX2 = brickLX2 + 50;
             }
-            
+
         }
-    
-            //First column of bricks on right side
-            
-            for (int i = 0; i < brickRight1.length; i++) {
+
+        //First column of bricks on right side
+
+        for (int i = 0; i < brickRight1.length; i++) {
 
             brickRight1[i] = new Rectangle(brickRX1, brickRY1, 20, 80);
 
-            
-                brickRY1 = brickRY1 + 85;
-            
-            if(brickRY1 >= HEIGHT){
+
+            brickRY1 = brickRY1 + 85;
+
+            if (brickRY1 >= HEIGHT) {
                 brickRY1 = 5;
                 brickRX1 = brickRX1 - 50;
             }
         }
-            //second column of alternating bricks on right side
-            for (int a = 0; a < brickRight2.length; a++) {
+        //second column of alternating bricks on right side
+        for (int a = 0; a < brickRight2.length; a++) {
 
             brickRight2[a] = new Rectangle(brickRX2, brickRY2, 20, 80);
 
-            
-                brickRY2 = brickRY2 + 85;
-            
-            if(brickRY2 >= HEIGHT){
+
+            brickRY2 = brickRY2 + 85;
+
+            if (brickRY2 >= HEIGHT) {
                 brickRY2 = -40;
                 brickRX2 = brickRX2 - 50;
             }
-            
+
         }
-            
-            
+
+
     }
 
     // The main game loop
@@ -205,7 +204,7 @@ preSetup();
         paddleBallCollision();
         brickCollision();
         goal();
-        
+
     }
 
     private void ballMove() {
@@ -249,121 +248,114 @@ preSetup();
 
     private void paddleBallCollision() {
         //collision with bottom/top and paddles
-        if(ball.y <= 0 && ball.y + ball.height == paddle1.y){
-            ball.x = WIDTH/2 - ball.width/2;
-        ball.y = HEIGHT/2 - ball.height/2;
-        
+        if (ball.y <= 0 && ball.y + ball.height == paddle1.y) {
+            ball.x = WIDTH / 2 - ball.width / 2;
+            ball.y = HEIGHT / 2 - ball.height / 2;
+
+        }
+        if (ball.y >= HEIGHT && ball.y == paddle1.y + paddle1.height) {
+            ball.x = WIDTH / 2 - ball.width / 2;
+            ball.y = HEIGHT / 2 - ball.height / 2;
+
         }
         //top
-        if(ball.y<0){
+        if (ball.y < 0) {
             ballAngle1 = ballAngle1 * -1;
         }
-    //bottom
-        if((ball.y + ball.height) > HEIGHT){
+        //bottom
+        if ((ball.y + ball.height) > HEIGHT) {
             ballAngle1 = ballAngle1 * -1;
         }
         //does ball hit paddle 1
-
-        if(ball.intersects(paddle1)&& ball.y> paddle1.y && ball.y+ ball.height < paddle1.y + paddle1.height){
-                //make sure we don't go over 360 degrees
-            ballAngle1 = (180 + ballAngle1 * -1)% 360; 
-            
-        } 
-        if(ball.intersects(paddle1)&& ball.y< paddle1.y 
-                && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x){ 
-            
-            ball.y = paddle1.y - ball.height;
-            
-                ballAngle1 = (180 + ballAngle1 * -1)% 360;
-            
-            }
-            if(ball.intersects(paddle1)&& ball.y + ball.height> paddle1.y + paddle1.height
-                && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x){    
-                
-            ball.y = paddle1.y + paddle1.height + ball.height;
-            
-                ballAngle1 = (180 + ballAngle1 * -1)% 360;
-            
-            
-            
-        }
         
+            if (ball.intersects(paddle1)
+                    && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x) {
+                if (ball.y  < paddle1.y && ball.y + ball.height > paddle1.y) {
+                    ball.y = paddle1.y - ball.height;
+
+                }
+                if (ball.y + ball.height > paddle1.y + paddle1.height && ball.y < paddle1.y + paddle1.height) {
+                    ball.y = paddle1.y + paddle1.height + ball.height;
+                }
+                ballAngle1 = (180 + ballAngle1 * -1) % 360;
+            }
+        
+        /*if(ball.intersects(paddle1)&& ball.y + ball.height> paddle1.y + paddle1.height
+         && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x){    
+                
+         ball.y = paddle1.y + paddle1.height + ball.height;
+            
+         ballAngle1 = (180 + ballAngle1 * -1)% 360;
+           
+         }*/
+
         //does ball hit paddle 2
         //if(b1.x > b2.x + b2.width || b1.x + b1.width < b2.x || b1.y > b2.y + b2.height||b1.y + 
-        if(ball.intersects(paddle2)){
-            ballAngle1 = (180 + ballAngle1 * -1) %360;
+        if (ball.intersects(paddle2)) {
+           int paddlegone = paddle2.y;
+            paddle2.y = 1000;
+            ballAngle1 = (180 + ballAngle1 * -1) % 360;
+            paddle2.y = paddlegone ;
         }
-        
-      /*  if((ball.y <= (paddle1.y + paddle1.height) && paddle1.x < ball.x && ball.y < paddle1.width)
-                || ((ball.y + ball.height >= paddle1.y) && paddle1.x < ball.x 
-                && ball.y < paddle1.width)){
-            ballAngle1 = ballAngle1 * -1;
-        }*/
-       /* if((ball.y+ball.height> paddle1.y) && (ball.y < paddle1.y+paddle1.height) 
-                &&(ball.x + ball.width < paddle1.x + paddle1.width) && (ball.x >= paddle1.x) ){
-           //     ball.y = paddle1.y - ball.height;
-                ballAngle1 = (180 + ballAngle1 * -1)% 360;
-            }*/
-        
-        
-                
+
+
+
     }
-    
+
     private void brickCollision() {
         /*Detect the ball hitting the first pattern of bricks on the left side 
          and make the bricks "disapear" by moving it far offscreen*/
- for(int i = 0; i< brickLeft1.length; i++){
-     if(ball.intersects(brickLeft1[i])){
-         brickLeft1[i].x = -1000;
-         ballAngle1 = (180 + ballAngle1 * -1) %360;
-     }
- }
-     /*Detect the ball hitting the first pattern of bricks on the right side 
+        for (int i = 0; i < brickLeft1.length; i++) {
+            if (ball.intersects(brickLeft1[i])) {
+                brickLeft1[i].x = -1000;
+                ballAngle1 = (180 + ballAngle1 * -1) % 360;
+            }
+        }
+        /*Detect the ball hitting the first pattern of bricks on the right side 
          and make the bricks "disapear" by moving it far offscreen*/
-          for(int i = 0; i< brickRight1.length; i++){
-     if(ball.intersects(brickRight1[i])){
-         brickRight1[i].x = -1000;
-         ballAngle1 = (180 + ballAngle1 * -1) %360;
-     }
-          }
-     /*Detect the ball hitting the second pattern of bricks on the left side 
+        for (int i = 0; i < brickRight1.length; i++) {
+            if (ball.intersects(brickRight1[i])) {
+                brickRight1[i].x = -1000;
+                ballAngle1 = (180 + ballAngle1 * -1) % 360;
+            }
+        }
+        /*Detect the ball hitting the second pattern of bricks on the left side 
          and make the bricks "disapear" by moving it far offscreen*/
-     for(int i = 0; i< brickLeft2.length; i++){
-     if(ball.intersects(brickLeft2[i])){
-         brickLeft2[i].x = -1000;
-         ballAngle1 = (180 + ballAngle1 * -1) %360;
-     }
- }
-     /*Detect the ball hitting the second pattern of bricks on the right side 
+        for (int i = 0; i < brickLeft2.length; i++) {
+            if (ball.intersects(brickLeft2[i])) {
+                brickLeft2[i].x = -1000;
+                ballAngle1 = (180 + ballAngle1 * -1) % 360;
+            }
+        }
+        /*Detect the ball hitting the second pattern of bricks on the right side 
          and make the bricks "disapear" by moving it far offscreen*/
-          for(int i = 0; i< brickRight2.length; i++){
-     if(ball.intersects(brickRight2[i])){
-         brickRight2[i].x = -1000;
-         ballAngle1 = (180 + ballAngle1 * -1) %360;
-     }
-     
-     
- }
- }  
-        
-    
+        for (int i = 0; i < brickRight2.length; i++) {
+            if (ball.intersects(brickRight2[i])) {
+                brickRight2[i].x = -1000;
+                ballAngle1 = (180 + ballAngle1 * -1) % 360;
+            }
+
+
+        }
+    }
 
     private void goal() {
-                if(ball.x<0){
-       
-        ball.x = WIDTH/2 - ball.width/2;
-        ball.y = HEIGHT/2 - ball.height/2;
-        
-    }
+        if (ball.x < 0) {
+
+            ball.x = WIDTH / 2 - ball.width / 2;
+            ball.y = HEIGHT / 2 - ball.height / 2;
+
+        }
         //ball hits right hand side
-        if(ball.x + ball.width > WIDTH){
-        
-        ball.x = WIDTH/2 - ball.width/2;
-        ball.y = HEIGHT/2 - ball.height/2;
-       
-    }
+        if (ball.x + ball.width > WIDTH) {
+
+            ball.x = WIDTH / 2 - ball.width / 2;
+            ball.y = HEIGHT / 2 - ball.height / 2;
+
+        }
     }
     // Used to implement any of the Mouse Actions
+
     private class Mouse extends MouseAdapter {
 
         // if a mouse button has been pressed down
