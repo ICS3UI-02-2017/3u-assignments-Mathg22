@@ -248,17 +248,32 @@ public class A8_Game extends JComponent implements ActionListener {
 
     private void paddleBallCollision() {
         //collision with bottom/top and paddles
+        //paddle1 top of paddle ball and being squished
         if (ball.y <= 0 && ball.y + ball.height == paddle1.y) {
             ball.x = WIDTH / 2 - ball.width / 2;
             ball.y = HEIGHT / 2 - ball.height / 2;
 
         }
+        //paddle1 bottom of paddle and ball being squished
         if (ball.y >= HEIGHT && ball.y == paddle1.y + paddle1.height) {
             ball.x = WIDTH / 2 - ball.width / 2;
             ball.y = HEIGHT / 2 - ball.height / 2;
 
         }
-        //top
+        //paddle2 top of paddle and ball being squished
+        if (ball.y <= 0 && ball.y + ball.height == paddle2.y) {
+            ball.x = WIDTH / 2 - ball.width / 2;
+            ball.y = HEIGHT / 2 - ball.height / 2;
+
+        }
+        //paddle2 top of paddle and ball being squished
+        if (ball.y >= HEIGHT && ball.y == paddle1.y + paddle2.height) {
+            ball.x = WIDTH / 2 - ball.width / 2;
+            ball.y = HEIGHT / 2 - ball.height / 2;
+
+        }
+        
+        //top and ball
         if (ball.y < 0) {
             ballAngle1 = ballAngle1 * -1;
         }
@@ -268,36 +283,36 @@ public class A8_Game extends JComponent implements ActionListener {
         }
         //does ball hit paddle 1
         
-            if (ball.intersects(paddle1)
-                    && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x) {
-                if (ball.y  < paddle1.y && ball.y + ball.height > paddle1.y) {
+            if (ball.intersects(paddle1)) {
+                if (ball.y  < paddle1.y ) {
                     ball.y = paddle1.y - ball.height;
+                    ballAngle1 = ( ballAngle1 * -1) % 360;
 
+                }else if (ball.y + ball.height > paddle1.y + paddle1.height) {
+                    ball.y = paddle1.y + paddle1.height ;
+                    ballAngle1 = ( ballAngle1 * -1) % 360;
+                }else{
+                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
                 }
-                if (ball.y + ball.height > paddle1.y + paddle1.height && ball.y < paddle1.y + paddle1.height) {
-                    ball.y = paddle1.y + paddle1.height + ball.height;
-                }
-                ballAngle1 = (180 + ballAngle1 * -1) % 360;
+                
+                
             }
         
-        /*if(ball.intersects(paddle1)&& ball.y + ball.height> paddle1.y + paddle1.height
-         && ball.x < paddle1.x + paddle1.width && ball.x + ball.width > paddle1.x){    
-                
-         ball.y = paddle1.y + paddle1.height + ball.height;
-            
-         ballAngle1 = (180 + ballAngle1 * -1)% 360;
-           
-         }*/
-
+       
         //does ball hit paddle 2
-        //if(b1.x > b2.x + b2.width || b1.x + b1.width < b2.x || b1.y > b2.y + b2.height||b1.y + 
+        
         if (ball.intersects(paddle2)) {
-           int paddlegone = paddle2.y;
-            paddle2.y = 1000;
-            ballAngle1 = (180 + ballAngle1 * -1) % 360;
-            paddle2.y = paddlegone ;
-        }
+                if (ball.y  < paddle2.y ) {
+                    ball.y = paddle2.y - ball.height;
+                    ballAngle1 = ( ballAngle1 * -1) % 360;
 
+                }else if (ball.y + ball.height > paddle2.y + paddle1.height) {
+                    ball.y = paddle2.y + paddle2.height ;
+                    ballAngle1 = ( ballAngle1 * -1) % 360;
+                }else{
+                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
+                }
+        }
 
 
     }
