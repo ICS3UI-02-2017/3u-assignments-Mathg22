@@ -62,6 +62,9 @@ public class A8_Game extends JComponent implements ActionListener {
     int brickRX1 = 760;
     int brickRY2 = -40;
     int brickRX2 = 735;
+    int screen = 0;
+    
+    Rectangle button = new Rectangle(350,275, 100, 50);
 
     // GAME VARIABLES END HERE    
     // Constructor to create the Frame and place the panel in
@@ -103,29 +106,34 @@ public class A8_Game extends JComponent implements ActionListener {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE
-
-        //set background color
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
-        //created paddles and ball
-        g.setColor(Color.WHITE);
-        g.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
-        g.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
-        g.fillRect(ball.x, ball.y, ball.width, ball.height);
-        //created bricks on left side
-        g.setColor(Color.GREEN);
-        for (int i = 0; i < brickLeft1.length; i++) {
-            g.fillRect(brickLeft1[i].x, brickLeft1[i].y, brickLeft1[i].width, brickLeft1[i].height);
+        if(screen == 0){
+            g.setColor(Color.black);
+            g.fillRect(button.x, button.y, button.width, button.height);
         }
-        for (int i = 0; i < brickLeft2.length; i++) {
-            g.fillRect(brickLeft2[i].x, brickLeft2[i].y, brickLeft2[i].width, brickLeft2[i].height);
-        }
-        //created bricks on right side
-        for (int i = 0; i < brickRight1.length; i++) {
-            g.fillRect(brickRight1[i].x, brickRight1[i].y, brickRight1[i].width, brickRight1[i].height);
-        }
-        for (int i = 0; i < brickRight2.length; i++) {
-            g.fillRect(brickRight2[i].x, brickRight2[i].y, brickRight2[i].width, brickRight2[i].height);
+        if (screen == 1) {
+            //set background color
+            g.setColor(Color.BLACK);
+            g.fillRect(0, 0, WIDTH, HEIGHT);
+            //created paddles and ball
+            g.setColor(Color.WHITE);
+            g.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
+            g.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
+            g.fillRect(ball.x, ball.y, ball.width, ball.height);
+            //created bricks on left side
+            g.setColor(Color.GREEN);
+            for (int i = 0; i < brickLeft1.length; i++) {
+                g.fillRect(brickLeft1[i].x, brickLeft1[i].y, brickLeft1[i].width, brickLeft1[i].height);
+            }
+            for (int i = 0; i < brickLeft2.length; i++) {
+                g.fillRect(brickLeft2[i].x, brickLeft2[i].y, brickLeft2[i].width, brickLeft2[i].height);
+            }
+            //created bricks on right side
+            for (int i = 0; i < brickRight1.length; i++) {
+                g.fillRect(brickRight1[i].x, brickRight1[i].y, brickRight1[i].width, brickRight1[i].height);
+            }
+            for (int i = 0; i < brickRight2.length; i++) {
+                g.fillRect(brickRight2[i].x, brickRight2[i].y, brickRight2[i].width, brickRight2[i].height);
+            }
         }
 
 
@@ -199,11 +207,13 @@ public class A8_Game extends JComponent implements ActionListener {
     // The main game loop
     // In here is where all the logic for my game will go
     public void gameLoop() {
-        ballMove();
-        paddlesMove();
-        paddleBallCollision();
-        brickCollision();
-        goal();
+        if (screen == 1) {
+            ballMove();
+            paddlesMove();
+            paddleBallCollision();
+            brickCollision();
+            goal();
+        }
 
     }
 
@@ -272,7 +282,7 @@ public class A8_Game extends JComponent implements ActionListener {
             ball.y = HEIGHT / 2 - ball.height / 2;
 
         }
-        
+
         //top and ball
         if (ball.y < 0) {
             ballAngle1 = ballAngle1 * -1;
@@ -282,36 +292,36 @@ public class A8_Game extends JComponent implements ActionListener {
             ballAngle1 = ballAngle1 * -1;
         }
         //does ball hit paddle 1
-        
-            if (ball.intersects(paddle1)) {
-                if (ball.y  < paddle1.y ) {
-                    ball.y = paddle1.y - ball.height;
-                    ballAngle1 = ( ballAngle1 * -1) % 360;
 
-                }else if (ball.y + ball.height > paddle1.y + paddle1.height) {
-                    ball.y = paddle1.y + paddle1.height ;
-                    ballAngle1 = ( ballAngle1 * -1) % 360;
-                }else{
-                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
-                }
-                
-                
+        if (ball.intersects(paddle1)) {
+            if (ball.y < paddle1.y) {
+                ball.y = paddle1.y - ball.height;
+                ballAngle1 = (ballAngle1 * -1) % 360;
+
+            } else if (ball.y + ball.height > paddle1.y + paddle1.height) {
+                ball.y = paddle1.y + paddle1.height;
+                ballAngle1 = (ballAngle1 * -1) % 360;
+            } else {
+                ballAngle1 = (180 + ballAngle1 * -1) % 360;
             }
-        
-       
-        //does ball hit paddle 2
-        
-        if (ball.intersects(paddle2)) {
-                if (ball.y  < paddle2.y ) {
-                    ball.y = paddle2.y - ball.height;
-                    ballAngle1 = ( ballAngle1 * -1) % 360;
 
-                }else if (ball.y + ball.height > paddle2.y + paddle1.height) {
-                    ball.y = paddle2.y + paddle2.height ;
-                    ballAngle1 = ( ballAngle1 * -1) % 360;
-                }else{
-                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
-                }
+
+        }
+
+
+        //does ball hit paddle 2
+
+        if (ball.intersects(paddle2)) {
+            if (ball.y < paddle2.y) {
+                ball.y = paddle2.y - ball.height;
+                ballAngle1 = (ballAngle1 * -1) % 360;
+
+            } else if (ball.y + ball.height > paddle2.y + paddle1.height) {
+                ball.y = paddle2.y + paddle2.height;
+                ballAngle1 = (ballAngle1 * -1) % 360;
+            } else {
+                ballAngle1 = (180 + ballAngle1 * -1) % 360;
+            }
         }
 
 
@@ -322,36 +332,82 @@ public class A8_Game extends JComponent implements ActionListener {
          and make the bricks "disapear" by moving it far offscreen*/
         for (int i = 0; i < brickLeft1.length; i++) {
             if (ball.intersects(brickLeft1[i])) {
+
+                if (ball.y < brickLeft1[i].y) {
+                    ball.y = brickLeft1[i].y - ball.height;
+                    ballAngle1 = (ballAngle1 * -1) % 360;
+
+                } else if (ball.y + ball.height > brickLeft1[i].y + brickLeft1[i].height) {
+                    ball.y = brickLeft1[i].y + brickLeft1[i].height;
+                    ballAngle1 = (ballAngle1 * -1) % 360;
+                } else {
+                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
+
+                }
                 brickLeft1[i].x = -1000;
-                ballAngle1 = (180 + ballAngle1 * -1) % 360;
+
+                if ((ball.intersects(brickLeft1[i]) && ball.intersects(brickLeft1[(i + 1)]))) {
+                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
+                }
+
             }
         }
         /*Detect the ball hitting the first pattern of bricks on the right side 
          and make the bricks "disapear" by moving it far offscreen*/
         for (int i = 0; i < brickRight1.length; i++) {
             if (ball.intersects(brickRight1[i])) {
+                if (ball.y < brickRight1[i].y) {
+                    ball.y = brickRight1[i].y - ball.height;
+                    ballAngle1 = (ballAngle1 * -1) % 360;
+
+                } else if (ball.y + ball.height > brickRight1[i].y + brickRight1[i].height) {
+                    ball.y = brickRight1[i].y + brickRight1[i].height;
+                    ballAngle1 = (ballAngle1 * -1) % 360;
+                } else {
+                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
+
+                }
                 brickRight1[i].x = -1000;
-                ballAngle1 = (180 + ballAngle1 * -1) % 360;
             }
         }
         /*Detect the ball hitting the second pattern of bricks on the left side 
          and make the bricks "disapear" by moving it far offscreen*/
         for (int i = 0; i < brickLeft2.length; i++) {
             if (ball.intersects(brickLeft2[i])) {
+                if (ball.y < brickLeft2[i].y) {
+                    ball.y = brickLeft2[i].y - ball.height;
+                    ballAngle1 = (ballAngle1 * -1) % 360;
+
+                } else if (ball.y + ball.height > brickLeft2[i].y + brickLeft2[i].height) {
+                    ball.y = brickLeft2[i].y + brickLeft2[i].height;
+                    ballAngle1 = (ballAngle1 * -1) % 360;
+                } else {
+                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
+
+                }
                 brickLeft2[i].x = -1000;
-                ballAngle1 = (180 + ballAngle1 * -1) % 360;
             }
         }
         /*Detect the ball hitting the second pattern of bricks on the right side 
          and make the bricks "disapear" by moving it far offscreen*/
         for (int i = 0; i < brickRight2.length; i++) {
             if (ball.intersects(brickRight2[i])) {
+                if (ball.y < brickRight2[i].y) {
+                    ball.y = brickRight2[i].y - ball.height;
+                    ballAngle1 = (ballAngle1 * -1) % 360;
+
+                } else if (ball.y + ball.height > brickRight2[i].y + brickRight2[i].height) {
+                    ball.y = brickRight2[i].y + brickRight2[i].height;
+                    ballAngle1 = (ballAngle1 * -1) % 360;
+                } else {
+                    ballAngle1 = (180 + ballAngle1 * -1) % 360;
+
+                }
                 brickRight2[i].x = -1000;
-                ballAngle1 = (180 + ballAngle1 * -1) % 360;
             }
-
-
         }
+
+
     }
 
     private void goal() {
@@ -376,6 +432,13 @@ public class A8_Game extends JComponent implements ActionListener {
         // if a mouse button has been pressed down
         @Override
         public void mousePressed(MouseEvent e) {
+            int mouseX = e.getX();
+            int mouseY = e.getY();
+            if(screen == 0){
+                if(button.contains(mouseX, mouseY)){
+                    screen = 1;
+                }
+            }
         }
 
         // if a mouse button has been released
