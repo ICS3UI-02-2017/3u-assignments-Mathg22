@@ -64,7 +64,7 @@ public class A8_Game extends JComponent implements ActionListener {
     int brickRX2 = 735;
     int screen = 0;
     
-    Rectangle button = new Rectangle(350,275, 100, 50);
+    Rectangle start = new Rectangle(350,275, 100, 50);
 
     // GAME VARIABLES END HERE    
     // Constructor to create the Frame and place the panel in
@@ -107,8 +107,8 @@ public class A8_Game extends JComponent implements ActionListener {
 
         // GAME DRAWING GOES HERE
         if(screen == 0){
-            g.setColor(Color.black);
-            g.fillRect(button.x, button.y, button.width, button.height);
+            g.setColor(Color.green);
+            g.fillRect(start.x, start.y, start.width, start.height);
         }
         if (screen == 1) {
             //set background color
@@ -435,7 +435,7 @@ public class A8_Game extends JComponent implements ActionListener {
             int mouseX = e.getX();
             int mouseY = e.getY();
             if(screen == 0){
-                if(button.contains(mouseX, mouseY)){
+                if(start.contains(mouseX, mouseY)){
                     screen = 1;
                 }
             }

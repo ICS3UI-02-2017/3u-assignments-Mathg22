@@ -12,12 +12,15 @@ import java.util.Scanner;
  */
 public class A7Q8 {
 
-    public static int allDigitsOdd(int digit){
+    public static void allDigitsOdd(int digit){
         String number = String.valueOf(digit);
         int length = number.length();
-        int lastint = length - 1;
-        String last = number.substring(length);
-        return lastint;
+        int l = length;
+        for(int i = length - 1; i>0; i--, l--){
+            
+            
+        }
+        
         
     }
     /**
@@ -25,9 +28,10 @@ public class A7Q8 {
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the number you want to find the last digit of here:");
+        System.out.println("Enter the number here to determine if all of the digits are odd or not");
         int digit = input.nextInt();
-        int a = allDigitsOdd(digit);
         
+        
+        System.out.println("Each digit in this number is odd");
     }
 }
