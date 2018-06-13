@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class A7Q7 {
     //function method to find and return the first digit in the number
+
     public static int firstDigit(int digit) {
         //create new variable to be the value of the given number
         int a = digit;

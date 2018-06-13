@@ -12,8 +12,11 @@ import java.util.Scanner;
  */
 public class A7Q4 {
     //function to calculate the compound interest and return the balance 
-    public static double compoundInterest(double p, double r, int n ){
-        double balance = p*(Math.pow((1+r),n));
+
+    public static double compoundInterest(double p, double r, int n) {
+        //double created to be the balance. Perfrom necessary calculations to find the balance using given values
+        double balance = p * (Math.pow((1 + r), n));
+        //return the balance to the main method
         return balance;
     }
 
@@ -29,9 +32,9 @@ public class A7Q4 {
         double r = input.nextDouble();
         System.out.println("How much time has passed in years?");
         int n = input.nextInt();
-       double balance= compoundInterest(p,r,n);
-        System.out.println("The new balance of your account is "+balance);
-        
-        
+        double balance = compoundInterest(p, r, n);
+        System.out.println("The new balance of your account is " + balance);
+
+
     }
 }

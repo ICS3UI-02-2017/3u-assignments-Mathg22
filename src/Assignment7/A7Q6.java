@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class A7Q6 {
 //function method to find the last digit of any given number
+
     public static int lastDigit(int digit) {
         //create a string with the same value of the integer
         String number = String.valueOf(digit);
