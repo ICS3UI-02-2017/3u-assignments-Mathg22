@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +26,7 @@ public class A8_Game extends JComponent implements ActionListener {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
     //Title of the window
-    String title = "My Game";
+    String title = "Brick Breaker 1v1";
     // sets the framerate and delay for our game
     // this calculates the number of milliseconds per frame
     // you just need to select an approproate framerate
@@ -35,6 +36,13 @@ public class A8_Game extends JComponent implements ActionListener {
     // this is what keeps our time running smoothly :)
     Timer gameTimer;
     // YOUR GAME VARIABLES WOULD GO HERE
+    //start screen colors
+    Color blueish = new Color(66, 244, 191);
+    Color purpleish = new Color(170,66,244);
+    //strings
+    String clickStart = "Click HERE to Start";
+       String clickRestart = "Click HERE to Play Again";
+       
     //paddle varaiables
     Rectangle paddle1 = new Rectangle(200, 225, 25, 150);
     Rectangle paddle2 = new Rectangle(600, 225, 25, 150);
@@ -63,12 +71,14 @@ public class A8_Game extends JComponent implements ActionListener {
     int brickRY2 = -40;
     int brickRX2 = 735;
     int screen = 0;
-    
-    Rectangle start = new Rectangle(350,275, 100, 50);
-
+    Rectangle start = new Rectangle(275, 320, 250, 100);
+    Rectangle selectScreen = new Rectangle(0, 0, WIDTH, HEIGHT);
+    //font variables
+    Font bigFont = new Font("arial", Font.BOLD, 20);
     // GAME VARIABLES END HERE    
     // Constructor to create the Frame and place the panel in
     // You will learn more about this in Grade 12 :)
+
     public A8_Game() {
         // creates a windows to show my game
         JFrame frame = new JFrame(title);
@@ -106,9 +116,15 @@ public class A8_Game extends JComponent implements ActionListener {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE
-        if(screen == 0){
-            g.setColor(Color.green);
+        if (screen == 0) {
+            g.setColor(blueish);
+            g.fillRect(selectScreen.x, selectScreen.y, selectScreen.width, selectScreen.height);
+            g.setColor(purpleish);
             g.fillRect(start.x, start.y, start.width, start.height);
+            g.setColor(Color.black);
+            g.setFont(bigFont);
+            g.drawString(clickStart, (start.x + 30), (start.y+55));
+
         }
         if (screen == 1) {
             //set background color
@@ -135,6 +151,18 @@ public class A8_Game extends JComponent implements ActionListener {
                 g.fillRect(brickRight2[i].x, brickRight2[i].y, brickRight2[i].width, brickRight2[i].height);
             }
         }
+            if( screen == 3){
+                            g.setColor(blueish);
+            g.fillRect(selectScreen.x, selectScreen.y, selectScreen.width, selectScreen.height);
+            g.setColor(purpleish);
+            g.fillRect(start.x, start.y, start.width, start.height);
+            g.setColor(Color.black);
+            g.setFont(bigFont);
+            g.drawString(clickRestart, (start.x + 10), (start.y+55));
+            g.setFont(bigFont);
+       //     g.drawString();
+            }
+        
 
 
         // GAME DRAWING ENDS HERE
@@ -413,19 +441,19 @@ public class A8_Game extends JComponent implements ActionListener {
     private void goal() {
         if (ball.x < 0) {
 
-            ball.x = WIDTH / 2 - ball.width / 2;
-            ball.y = HEIGHT / 2 - ball.height / 2;
+            screen = 3;
 
         }
         //ball hits right hand side
         if (ball.x + ball.width > WIDTH) {
 
-            ball.x = WIDTH / 2 - ball.width / 2;
-            ball.y = HEIGHT / 2 - ball.height / 2;
+screen = 3;
 
         }
     }
     // Used to implement any of the Mouse Actions
+
+
 
     private class Mouse extends MouseAdapter {
 
@@ -434,8 +462,8 @@ public class A8_Game extends JComponent implements ActionListener {
         public void mousePressed(MouseEvent e) {
             int mouseX = e.getX();
             int mouseY = e.getY();
-            if(screen == 0){
-                if(start.contains(mouseX, mouseY)){
+            if (screen == 0) {
+                if (start.contains(mouseX, mouseY)) {
                     screen = 1;
                 }
             }
