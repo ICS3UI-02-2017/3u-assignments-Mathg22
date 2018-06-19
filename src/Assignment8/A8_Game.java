@@ -49,13 +49,13 @@ public class A8_Game extends JComponent implements ActionListener {
 //ball varaibles
     Rectangle ball = new Rectangle(390, 290, 20, 20);
     int ballAngle1 = 45;
-    int ballSpeed1 = 4;
+    int ballSpeed1 = 10;
     //control variables
     boolean paddle1Up = false;
     boolean paddle1Down = false;
     boolean paddle2Up = false;
     boolean paddle2Down = false;
-    int paddleSpeed = 8;
+    int paddleSpeed = 10;
     //Left brick variables
     Rectangle[] brickLeft1 = new Rectangle[21];
     Rectangle[] brickLeft2 = new Rectangle[16];
@@ -465,6 +465,12 @@ screen = 3;
             if (screen == 0) {
                 if (start.contains(mouseX, mouseY)) {
                     screen = 1;
+                }
+            }
+            if (screen == 3) {
+                if (start.contains(mouseX, mouseY)) {
+                    screen = 1;
+                    
                 }
             }
         }
